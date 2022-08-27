@@ -76,9 +76,9 @@
         <p class="tracking-tight text-3xl text-gray-900">Distribuidor: ${{ $item->price3 }}</p>
 
         <form class="mt-10">
-            <button type="submit" class="mt-10 w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            <a href="{{ url('cart/add/') }}/{{$item->id}}" class="mt-10 w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 Agregar
-            </button>
+            </a>
         </form>
       </div>
 

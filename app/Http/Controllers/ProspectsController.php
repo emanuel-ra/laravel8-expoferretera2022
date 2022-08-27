@@ -17,8 +17,7 @@ class ProspectsController extends Controller
     public function form_add(){
 
         $State = State::get();
-       
-
+        
         return view('layout.prospects.add',[
             'State'=>$State ,         
         ]);

@@ -86,7 +86,7 @@
         </div>
 
         <div class="w-[40%] p-2 relative">
-            <form action="{{ route('cart_price') }}" method="post" class="w-[30%] fixed">
+            <form action="{{ route('quote_save') }}" method="post" class="w-[30%] fixed">
                 @csrf
                 <div class="w-full bg-gray-300 rounded-lg shadow-lg">
                     <h2 class="text-center text-2xl text-gray-700 font-semibold p-2">Resumen del pedido</h2>
@@ -115,7 +115,7 @@
 
                 <div class="w-full mt-2">
                     <label for="">Atendido por</label>
-                    <input type="text" class="w-full border-2  rounded-lg p-3">
+                    <input type="text" name="attended_by" class="w-full border-2 rounded-lg p-3">
                 </div>
 
                 <div class="w-full mt-2">

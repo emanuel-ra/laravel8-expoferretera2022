@@ -13,6 +13,9 @@
         <li class="nav__options__option">
             <a href="{{ route('prospects_list') }}">Prospecto</a>
         </li>
+        <li class="nav__options__option">
+            <a href="{{ route('quote') }}">Cotización</a>
+        </li>
     </ul>
 
     

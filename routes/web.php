@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProspectsController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\QuoteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,4 +44,9 @@ Route::prefix('cart')->group(function () {
     Route::get('/remove/{id}',[CartController::class,'remove'])->name('cart_remove');    
     Route::post('/update',[CartController::class,'update'])->name('cart_update');        
     Route::post('/price',[CartController::class,'set_price'])->name('cart_price');        
+});
+
+Route::prefix('quote')->group(function (){
+    Route::get('/',[QuoteController::class,'get'])->name('quote');
+    Route::post('/save',[QuoteController::class,'save'])->name('quote_save');        
 });

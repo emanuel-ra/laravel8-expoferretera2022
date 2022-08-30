@@ -50,7 +50,7 @@
         }
         .table_detail__td_total{
             padding:5px;
-            font-size:14px;
+            font-size:16px;
             background-color: #212121;
             color:#F5F5F5;
         }
@@ -106,12 +106,12 @@
                 @php 
                     $total += ($item->price*$item->quantity)
                 @endphp
-                <tr>
+                <tr valign="top">
                     <td class="table_detail__td">
                         <img src="./images/products/{{ $item->product->image }}" style="width:100px" alt="{{ $item->product->name }}">
                     </td>
                     <td class="table_detail__td">{{ $item->product->code }}</td>
-                    <td class="table_detail__td">{{ $item->product->name }}</td>
+                    <td class="table_detail__td">{{ ucfirst($item->product->name) }}</td>
                     <td class="table_detail__td">${{ number_format($item->price,2) }}</td>
                     <td class="table_detail__td">{{ $item->quantity }}</td>
                     <td class="table_detail__td">${{ number_format($item->price*$item->quantity,2) }}</td>

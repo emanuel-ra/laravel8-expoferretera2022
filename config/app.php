@@ -176,6 +176,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // LIBRARIES TO CREATE PDF FILE
+        Barryvdh\DomPDF\ServiceProvider::class
+
     ],
 
     /*

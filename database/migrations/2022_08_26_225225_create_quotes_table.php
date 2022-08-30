@@ -16,8 +16,8 @@ class CreateQuotesTable extends Migration
         Schema::create('quotes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('prospect_id');
-            $table->string('commentary');
-            $table->string('attended_by');
+            $table->string('commentary')->nullable();
+            $table->string('attended_by')->nullable();
             $table->decimal('total',8,2);
             $table->integer('type_price');
             $table->timestamps();

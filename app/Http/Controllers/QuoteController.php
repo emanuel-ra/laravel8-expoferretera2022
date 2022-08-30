@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\quote;
 use App\Models\quote_detail;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class QuoteController extends Controller
 {
@@ -13,10 +14,23 @@ class QuoteController extends Controller
         //return Response()->json($data);
         return view('layout.quote.list',['data'=>$data]);
     }
+    public function create_pdf($id){   
+
+        $data = quote::where('id',$id)->with('prospect')->with('detail')->get();
+        //$items = quote_detail::where('id',$id)->with('product')->get();
+        
+        //return Response()->json($data);
+
+        view()->share('quotes.pdf',$data);
+
+        $pdf = Pdf::loadView('layout.PDF.quote', ['data'=>$data]);
+        return $pdf->stream();
+        //return $pdf->download('quotes.pdf');
+    }
     public function save(Request $request){
 
         $this->validate($request, [               
-            'prospect_id' => 'required',
+            'prospect_id' => 'required' ,
         ]);
         
         $quote = new quote;      

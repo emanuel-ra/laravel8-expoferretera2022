@@ -48,5 +48,6 @@ Route::prefix('cart')->group(function () {
 
 Route::prefix('quote')->group(function (){
     Route::get('/',[QuoteController::class,'get'])->name('quote');
+    Route::get('/pdf/{id}',[QuoteController::class,'create_pdf'])->name('pdf');
     Route::post('/save',[QuoteController::class,'save'])->name('quote_save');        
 });

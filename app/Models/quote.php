@@ -12,4 +12,7 @@ class quote extends Model
     public function prospect(){
         return $this->hasOne(prospects::class,'id','prospect_id');
     }
+    public function detail(){
+        return $this->hasMany(quote_detail::class,'quote_id','id')->with('product');
+    }
 }

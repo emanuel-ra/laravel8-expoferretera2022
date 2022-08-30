@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProspectsController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\QuoteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +24,6 @@ use App\Http\Controllers\ProspectsController;
 // });
 
 Route::get('/',[HomeController::class,'index'])->name('home');
-Route::post('/',[HomeController::class,'index'])->name('home');
 
 Route::prefix('prospects')->group(function () {
     Route::get('/',[ProspectsController::class,'index'])->name('prospects_list');
@@ -32,4 +33,21 @@ Route::prefix('prospects')->group(function () {
 
 Route::prefix('products')->group(function () {
     Route::get('/view/{id}',[ProductsController::class,'view'])->name('prospects_view');
+});
+
+
+Route::prefix('cart')->group(function () {
+    Route::get('/',[CartController::class,'get'])->name('cart');
+    Route::get('/add/{id}',[CartController::class,'add'])->name('cart_add');
+    Route::get('/plus/{id}',[CartController::class,'plus'])->name('cart_plus');
+    Route::get('/minus/{id}',[CartController::class,'minus'])->name('cart_minus');    
+    Route::get('/remove/{id}',[CartController::class,'remove'])->name('cart_remove');    
+    Route::post('/update',[CartController::class,'update'])->name('cart_update');        
+    Route::post('/price',[CartController::class,'set_price'])->name('cart_price');        
+});
+
+Route::prefix('quote')->group(function (){
+    Route::get('/',[QuoteController::class,'get'])->name('quote');
+    Route::get('/pdf/{id}',[QuoteController::class,'create_pdf'])->name('pdf');
+    Route::post('/save',[QuoteController::class,'save'])->name('quote_save');        
 });

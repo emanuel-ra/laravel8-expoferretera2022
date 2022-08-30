@@ -18,7 +18,7 @@ class HomeController extends Controller
             $query->where('name','like', '%'.$request->keyword.'%')->orWhere('code', 'LIKE', '%'.$request->keyword.'%');
                  
         }
-
+       
         $items = $query->get();
 
         return view('layout.home.products', ['items' => $items]);

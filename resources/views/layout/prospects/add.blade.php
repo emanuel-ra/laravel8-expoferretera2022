@@ -49,6 +49,10 @@
                     <textarea name="commentary" class="w-full p-2 text-lg shadow-lg text-gray-700" value="{{old('commentary')}}" placeholder="Comentarios"></textarea>
                 </div>
 
+                <div class="flex mt-3">
+                    <input type="text" name="register_by" id="comercial_business" value="{{old('register_by')}}" placeholder="Atendido por...." class="w-full p-2 text-lg shadow-lg text-gray-700">
+                </div>
+
                 @if ($errors->any())
                     <div class="w-full bg-red-600 text-white p-5 text-lg rounded-xl shadow-xl mt-2">
                         <ul>

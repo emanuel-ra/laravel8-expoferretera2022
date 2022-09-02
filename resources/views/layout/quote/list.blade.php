@@ -3,12 +3,7 @@
 <div class="w-full">
 
     <div class="w-full p-2 flex justify-end">
-        <a href="{{route('prospects_add')}}" class="bg-blue-400 hover:bg-blue-700 hover:text-white flex p-3 rounded-lg hover:shadow-lg">
-            Registrar 
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ml-1" >
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-        </a>    
+        
     </div>
     
     <div class="w-full border-2 shadow-lg">

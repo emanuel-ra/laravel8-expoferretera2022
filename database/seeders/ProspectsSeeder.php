@@ -15,8 +15,7 @@ class ProspectsSeeder extends Seeder
     public function run()
     {
         //
-        prospects::factory()->count(30)->create();
-        
+        prospects::factory()->count(30)->create();        
 
     }
 }

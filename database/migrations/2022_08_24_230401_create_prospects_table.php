@@ -15,6 +15,7 @@ class CreateProspectsTable extends Migration
     {
         Schema::create('prospects', function (Blueprint $table) {
             $table->id();
+            $table->string('uuid')->nullable();
             $table->string('name');
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
@@ -23,7 +24,8 @@ class CreateProspectsTable extends Migration
             $table->string('address')->nullable();
             $table->string('zip_code')->nullable();
             $table->string('comercial_business')->nullable();
-            $table->string('commentary')->nullable();
+            $table->text('commentary')->nullable();
+            $table->string('register_by')->nullable();
             $table->timestamps();
         });
     }

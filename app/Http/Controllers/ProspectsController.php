@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\State;
 use App\Models\prospects;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Http;
 
 class ProspectsController extends Controller
 {
@@ -22,6 +24,35 @@ class ProspectsController extends Controller
             'State'=>$State ,         
         ]);
     }
+    public function download(){
+        $response = Http::get('https://massivehome.com.mx/api/v1/public/expo/prospects');
+     
+        if($response->successful())
+        {
+            foreach($response->json() as $key)
+            {
+                $prospects = new prospects;
+        
+                $prospects->name = $key["name"];
+                $prospects->uuid = Str::uuid()->toString();
+                $prospects->phone = $key["phone"];
+                $prospects->email = $key["email"];
+                $prospects->state = $key["state"];
+                $prospects->city = $key["city"];
+                $prospects->address = $key["address"];
+                $prospects->zip_code = $key["zip_code"];
+                $prospects->comercial_business = $key["comercial_businnes"];
+                $prospects->commentary = $key["commentary"];                
+                $prospects->register_by = $key["register_by"];  
+                
+                $prospects->save();
+        
+            }
+        }
+
+        return redirect()->route('prospects_list');    
+
+    }
     public function store(Request $request){
      
         $this->validate($request, [               
@@ -31,9 +62,9 @@ class ProspectsController extends Controller
         ]);   
 
         $prospects = new prospects;
-
         
         $prospects->name = $request->name;
+        $prospects->uuid = Str::uuid()->toString();
         $prospects->phone = $request->phone;
         $prospects->email = $request->email;
         $prospects->state = $request->state;
@@ -42,6 +73,8 @@ class ProspectsController extends Controller
         $prospects->zip_code = $request->zip_code;
         $prospects->comercial_business = $request->comercial_business;
         $prospects->commentary = $request->commentary;
+        $prospects->register_by = $request->register_by;
+        
         
         $prospects->save();
 

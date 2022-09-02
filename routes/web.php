@@ -8,6 +8,10 @@ use App\Http\Controllers\ProspectsController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\QuoteController;
 
+/* * * EXPORT EXCEL * * */
+use App\Exports\ProspectsExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +33,8 @@ Route::prefix('prospects')->group(function () {
     Route::get('/',[ProspectsController::class,'index'])->name('prospects_list');
     Route::get('/new',[ProspectsController::class,'form_add'])->name('prospects_add');
     Route::post('/store',[ProspectsController::class,'store'])->name('prospects_store');
+    Route::get('/download',[ProspectsController::class,'download'])->name('prospects_download');   
+
 });
 
 Route::prefix('products')->group(function () {
@@ -49,5 +55,14 @@ Route::prefix('cart')->group(function () {
 Route::prefix('quote')->group(function (){
     Route::get('/',[QuoteController::class,'get'])->name('quote');
     Route::get('/pdf/{id}',[QuoteController::class,'create_pdf'])->name('pdf');
-    Route::post('/save',[QuoteController::class,'save'])->name('quote_save');        
+    Route::post('/save',[QuoteController::class,'save'])->name('quote_save');                 
+});
+
+/*
+    * *EXPORT DATA AS EXCEL
+*/
+Route::prefix('excel')->group(function (){
+    Route::get('/prospects', function () {
+        return Excel::download(new ProspectsExport, 'prospects.xlsx');
+    });
 });

@@ -15,13 +15,14 @@
                         <div class="mt-4 flex justify-between">
                             <div>
                                 <h3 class="text-sm text-gray-700">
-                                <a href="{{ url('/products/view').'/'.$key->id }}" class="uppercase">
-                                    <span aria-hidden="true" class="absolute inset-0"></span>
-                                    {{ Str::substr($key->name,0, 30) }}
-                                </a>
+                                    <a href="{{ url('/products/view').'/'.$key->id }}" class="uppercase">
+                                        <span aria-hidden="true" class="absolute inset-0"></span>
+                                        {{ Str::substr($key->name,0, 30) }}
+                                    </a>
                                 </h3>
                                 <p class="mt-1 text-sm text-gray-500">{{$key->code}}</p>
                             </div>
+
                             <p class="text-sm font-medium text-gray-900">${{ number_format($key->price1,2) }}</p>
                             
                         </div>

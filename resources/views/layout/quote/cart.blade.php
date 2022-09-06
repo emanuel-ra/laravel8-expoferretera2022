@@ -29,7 +29,7 @@
 
         </form>
         
-        <div class="w-[60%] grid grid-cols-1 gap-2">
+        <div class="w-full lg:w-[60%] grid grid-cols-1 gap-2">
             @foreach($cart as $key)                
                 <div class="w-full flex border-t-2 border-b-2 mt-2 p-2">
                     
@@ -96,8 +96,8 @@
             @endforeach
         </div>
 
-        <div class="w-[40%] p-2 relative">
-            <form action="{{ route('quote_save') }}" method="post" class="w-[30%] fixed">
+        <div class="w-full lg:w-[40%] p-2 ">
+            <form action="{{ route('quote_save') }}" method="post" class="w-[100%]">
                 @csrf
                 <div class="w-full bg-gray-300 rounded-lg shadow-lg">
                     <h2 class="text-center text-2xl text-gray-700 font-semibold p-2">Resumen del pedido</h2>

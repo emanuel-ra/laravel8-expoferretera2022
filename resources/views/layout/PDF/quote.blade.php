@@ -82,6 +82,37 @@
                                 <td><b>Atendido Por:</b></td>
                                 <td>{{ $data[0]->attended_by }}</td>
                             </tr>
+                            <tr>
+                                <td><b>Precio:</b></td>
+                                <td>
+                                    @if($data[0]->type_price == 1)
+                                        Menudeo
+                                    @endif
+
+                                    @if($data[0]->type_price == 2)
+                                        Mayoreo
+                                    @endif
+
+                                    @if($data[0]->type_price == 3)
+                                        Distribuidor
+                                    @endif
+
+                                    @if($data[0]->type_price == 4)
+                                        Caja
+                                    @endif
+                                </td>
+                            </tr>
+
+
+                            @if($data[0]->discount_percentage > 0)
+                                <tr>
+                                    <td><b>Descuento:</b></td>
+                                    <td>%{{ $data[0]->discount_percentage }}</td>
+                                </tr>
+                            @endif
+
+                            
+
                         <table>
                     </div>
                 </td>
@@ -99,13 +130,9 @@
                 <td class="table_detail__th">Cantidad</td>
                 <td class="table_detail__th">Importe</td>
             </tr>
-            @php 
-                $total = 0
-            @endphp
+           
             @foreach($data[0]->detail as $item)
-                @php 
-                    $total += ($item->price*$item->quantity)
-                @endphp
+              
                 <tr valign="top">
                     <td class="table_detail__td">
                         <img src="./images/products/{{ $item->product->image }}" style="width:100px" alt="{{ $item->product->name }}">
@@ -117,11 +144,15 @@
                     <td class="table_detail__td">${{ number_format($item->price*$item->quantity,2) }}</td>
                 </tr>
             @endforeach
-
+            
             <tr>
-                <td colspan="4"></td>
-                <td class="table_detail__td_total">Total:</td>
-                <td class="table_detail__td_total">${{ number_format($total,2) }}</td>
+                <td colspan="3" class="table_detail__td_total">Total Descuento:</td>
+                <td colspan="3" class="table_detail__td_total">${{ number_format($data[0]->total_discount,2) }}</td>
+            </tr>
+            
+            <tr>
+                <td colspan="3" class="table_detail__td_total">Total:</td>
+                <td colspan="3" class="table_detail__td_total">${{ number_format(($data[0]->total-$data[0]->total_discount),2) }}</td>
             </tr>
         </table>
     </div>

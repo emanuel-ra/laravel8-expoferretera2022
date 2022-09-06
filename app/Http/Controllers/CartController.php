@@ -76,15 +76,35 @@ class CartController extends Controller
 
         $type_price = session('type_price', 1);
 
-        $total = 0;
+        $total = 0;       
+
+ 
         foreach($cart as $row)
         {            
             if($type_price==1){ $total += $row->price*$row->quantity;; }
             if($type_price==2){ $total += $row->associatedModel->price2*$row->quantity; }
             if($type_price==3){ $total += $row->associatedModel->price3*$row->quantity; }
+            if($type_price==4){ $total += $row->associatedModel->price4*$row->quantity; }
         }
-        
-        return view('layout.quote.cart', ['cart' => $cart,'prospects' => $prospects,'type_price'=>$type_price, 'total'=>$total]);
+      
+        $porcentage_descuento = 0; 
+        $total_descuento = 0;
+        if( ($type_price==3) || ($type_price==4) )
+        {
+            if($total>=40000 && $total<=49999){ $porcentage_descuento = 1; }
+            if($total>=50000 && $total<=99999){ $porcentage_descuento = 2; }
+            if($total>=100000 && $total<=199999){ $porcentage_descuento = 3; }
+            if($total>=200000 && $total<=299999){ $porcentage_descuento = 4; }
+            if($total>=300000 && $total<=499999){ $porcentage_descuento = 5; }
+            if($total>=500000){ $porcentage_descuento = 7; }
+            $total_descuento = $total*$porcentage_descuento/100;
+        }
+
+       
+
+        $total = $total-$total_descuento;
+
+        return view('layout.quote.cart', ['cart' => $cart,'prospects' => $prospects,'type_price'=>$type_price, 'total'=>$total, 'total_descuento'=>$total_descuento, 'porcentage_descuento'=>$porcentage_descuento]);
     }
     public function set_price(Request $request)
     {

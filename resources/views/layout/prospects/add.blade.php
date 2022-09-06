@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="flex mt-3">
-                    <textarea name="commentary" class="w-full p-2 text-lg shadow-lg text-gray-700" value="{{old('commentary')}}" placeholder="Comentarios"></textarea>
+                    <textarea name="commentary" class="w-full p-2 text-lg shadow-lg text-gray-700" placeholder="Comentarios">{{old('commentary')}}</textarea>
                 </div>
 
                 <div class="flex mt-3">

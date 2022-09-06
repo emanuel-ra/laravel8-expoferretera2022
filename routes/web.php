@@ -27,12 +27,14 @@ use Maatwebsite\Excel\Facades\Excel;
 //      return view('welcome');
 // });
 
-Route::get('/',[HomeController::class,'index'])->name('home');
+Route::get('/{page?}',[HomeController::class,'index'])->name('home');
 
 Route::prefix('prospects')->group(function () {
-    Route::get('/',[ProspectsController::class,'index'])->name('prospects_list');
+    Route::get('/list',[ProspectsController::class,'index'])->name('prospects_list');
     Route::get('/new',[ProspectsController::class,'form_add'])->name('prospects_add');
+    Route::get('/edit/{id}',[ProspectsController::class,'form_edit'])->name('prospects_edit');
     Route::post('/store',[ProspectsController::class,'store'])->name('prospects_store');
+    Route::post('/update/{id}',[ProspectsController::class,'update'])->name('prospects_update');
     Route::get('/download',[ProspectsController::class,'download'])->name('prospects_download');   
 
 });
@@ -43,7 +45,7 @@ Route::prefix('products')->group(function () {
 
 
 Route::prefix('cart')->group(function () {
-    Route::get('/',[CartController::class,'get'])->name('cart');
+    Route::get('/items',[CartController::class,'get'])->name('cart');
     Route::get('/add/{id}',[CartController::class,'add'])->name('cart_add');
     Route::get('/plus/{id}',[CartController::class,'plus'])->name('cart_plus');
     Route::get('/minus/{id}',[CartController::class,'minus'])->name('cart_minus');    
@@ -53,7 +55,7 @@ Route::prefix('cart')->group(function () {
 });
 
 Route::prefix('quote')->group(function (){
-    Route::get('/',[QuoteController::class,'get'])->name('quote');
+    Route::get('/list',[QuoteController::class,'get'])->name('quote');
     Route::get('/pdf/{id}',[QuoteController::class,'create_pdf'])->name('pdf');
     Route::post('/save',[QuoteController::class,'save'])->name('quote_save');                 
 });

@@ -38,6 +38,7 @@ class ProductsSeeder extends Seeder
             $price1 = $key["priceRetail"];
             $price2 = $key["priceWoleSale"];
             $price3 = $key["priceDistribuitor"];
+            $price4 = $key["box_price"];            
             $status_id = $key["statusId"];
 
             $gallery_products = $key["gallery_products"];
@@ -53,6 +54,7 @@ class ProductsSeeder extends Seeder
                 'price1' => number_format($price1,2,'.','') ,
                 'price2' => number_format($price2,2,'.','') ,
                 'price3' => number_format($price3,2,'.','') ,
+                'price4' => number_format($price4,2,'.','') ,
             ]);      
             
 

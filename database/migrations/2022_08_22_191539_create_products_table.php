@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->decimal('price1',8,2);
             $table->decimal('price2',8,2);
             $table->decimal('price3',8,2);
+            $table->decimal('price4',8,2);
             $table->smallInteger('status_id')->default(1);
             $table->timestamps();
         });

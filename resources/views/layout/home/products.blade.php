@@ -1,6 +1,9 @@
 @extends('home')
 @section('content')
        
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+        {{ $items->appends(['keyword' => $keyword])->links() }}
+    </div>
     <div class="bg-white">
         <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
             <h2 class="text-2xl font-bold tracking-tight text-gray-900">Artículos</h2>
@@ -10,7 +13,7 @@
                 @foreach($items as $key)
                     <div class="group relative">
                         <div class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
-                            <img src="{{ asset('images/products') }}/{{$key->image}}" alt="Front of men&#039;s Basic Tee in black." class="w-full h-full object-center object-cover lg:w-full lg:h-full">
+                            <img src="{{ asset('images/products') }}/{{$key->image}}" onerror="this.src='{{ asset('images/image-not-found.png') }}';" alt="Front of men&#039;s Basic Tee in black." class="w-full h-full object-center object-cover lg:w-full lg:h-full">
                         </div>
                         <div class="mt-4 flex justify-between">
                             <div>
@@ -33,5 +36,7 @@
             </div>
         </div>
     </div>       
-  
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+        {{ $items->appends(['keyword' => $keyword])->links() }}
+    </div>
 @endsection

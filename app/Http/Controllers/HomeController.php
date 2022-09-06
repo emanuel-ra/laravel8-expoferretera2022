@@ -8,19 +8,18 @@ use Facade\FlareClient\Http\Response;
 
 class HomeController extends Controller
 {
-    public function index(Request $request){
+    public function index($page=1,Request $request){
 
         //$items = Products::where('status_id',1)->get();      
         $query = Products::query();
         
         $query->where('status_id',1);
         if($request->keyword){
-            $query->where('name','like', '%'.$request->keyword.'%')->orWhere('code', 'LIKE', '%'.$request->keyword.'%');
-                 
+            $query->where('name','like', '%'.$request->keyword.'%')->orWhere('code', 'LIKE', '%'.$request->keyword.'%');                 
         }
        
-        $items = $query->get();
+        $items = $query->paginate(50);
 
-        return view('layout.home.products', ['items' => $items]);
+        return view('layout.home.products', ['items' => $items,'keyword' => $request->keyword]);
     }
 }

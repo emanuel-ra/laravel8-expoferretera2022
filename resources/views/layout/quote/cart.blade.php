@@ -1,5 +1,6 @@
 @extends('home')
 @section('content')
+
 <div class="w-full flex justify-center">
     
     <div class="container flex flex-wrap">       
@@ -20,6 +21,12 @@
                 <input <?=($type_price==3)?'checked':''?> id="radio_distribuidor" onclick="javascript: submit()" type="radio" value="3" name="radio_type_price" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                 <label for="radio_distribuidor" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer">Distribuidor</label>
             </div>
+
+            <div class="flex items-center">
+                <input <?=($type_price==4)?'checked':''?> id="radio_box" onclick="javascript: submit()" type="radio" value="4" name="radio_type_price" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="radio_box" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer">Caja</label>
+            </div>
+
         </form>
         
         <div class="w-[60%] grid grid-cols-1 gap-2">
@@ -46,6 +53,10 @@
 
                             @if($type_price == 3)
                                 $ {{ number_format(($key->associatedModel->price3*$key->quantity),2,'.',',') }}
+                            @endif
+
+                            @if($type_price == 4)
+                                $ {{ number_format(($key->associatedModel->price4*$key->quantity),2,'.',',') }}
                             @endif
                         </span>
                         
@@ -91,6 +102,16 @@
                 <div class="w-full bg-gray-300 rounded-lg shadow-lg">
                     <h2 class="text-center text-2xl text-gray-700 font-semibold p-2">Resumen del pedido</h2>
                     
+                    <div class="w-full border-t-2 p-4 flex justify-between text-gray-700">
+                        <span class="block text-3xl">Porcentage</span>
+                        <span class="block text-3xl">%{{ $porcentage_descuento }}</span>
+                    </div>
+
+                    <div class="w-full border-t-2 p-4 flex justify-between text-gray-700">
+                        <span class="block text-3xl">Total Descuento</span>
+                        <span class="block text-3xl">${{ number_format($total_descuento,2,'.',',') }}</span>
+                    </div>
+                                        
                     <div class="w-full border-t-2 p-4 flex justify-between text-gray-700">
                         <span class="block text-3xl">Total</span>
                         <span class="block text-3xl">${{ number_format($total,2,'.',',') }}</span>

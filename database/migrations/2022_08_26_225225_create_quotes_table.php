@@ -18,8 +18,8 @@ class CreateQuotesTable extends Migration
             $table->unsignedBigInteger('prospect_id');
             $table->string('commentary')->nullable();
             $table->string('attended_by')->nullable();
-            $table->decimal('total_discount',8,2);
-            $table->decimal('total',8,2);            
+            $table->decimal('total_discount',15,2);
+            $table->decimal('total',15,2);            
             $table->integer('type_price');
             $table->integer('discount_percentage');
             $table->timestamps();

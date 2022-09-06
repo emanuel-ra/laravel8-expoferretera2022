@@ -108,7 +108,12 @@
                     </div>
 
                     <div class="w-full border-t-2 p-4 flex justify-between text-gray-700">
-                        <span class="block text-3xl">Total Descuento</span>
+                        <span class="block text-3xl">SubTotal</span>
+                        <span class="block text-3xl">${{ number_format($sub_total,2,'.',',') }}</span>
+                    </div>
+
+                    <div class="w-full border-t-2 p-4 flex justify-between text-gray-700">
+                        <span class="block text-3xl">Descuento</span>
                         <span class="block text-3xl">${{ number_format($total_descuento,2,'.',',') }}</span>
                     </div>
                                         

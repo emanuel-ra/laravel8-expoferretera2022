@@ -91,7 +91,7 @@ class CartController extends Controller
         $total_descuento = 0;
         if( ($type_price==3) || ($type_price==4) )
         {
-            if($total>=40000 && $total<=49999){ $porcentage_descuento = 1; }
+            if($total>=40000 && $total<50000){ $porcentage_descuento = 1; }
             if($total>=50000 && $total<=99999){ $porcentage_descuento = 2; }
             if($total>=100000 && $total<=199999){ $porcentage_descuento = 3; }
             if($total>=200000 && $total<=299999){ $porcentage_descuento = 4; }
@@ -101,10 +101,10 @@ class CartController extends Controller
         }
 
        
-
+        $sub_total = $total;
         $total = $total-$total_descuento;
 
-        return view('layout.quote.cart', ['cart' => $cart,'prospects' => $prospects,'type_price'=>$type_price, 'total'=>$total, 'total_descuento'=>$total_descuento, 'porcentage_descuento'=>$porcentage_descuento]);
+        return view('layout.quote.cart', ['cart' => $cart,'prospects' => $prospects,'type_price'=>$type_price, 'total'=>$total, 'sub_total'=>$sub_total, 'total_descuento'=>$total_descuento, 'porcentage_descuento'=>$porcentage_descuento]);
     }
     public function set_price(Request $request)
     {

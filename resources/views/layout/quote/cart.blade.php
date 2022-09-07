@@ -103,7 +103,7 @@
                     <h2 class="text-center text-2xl text-gray-700 font-semibold p-2">Resumen del pedido</h2>
                     
                     <div class="w-full border-t-2 p-4 flex justify-between text-gray-700">
-                        <span class="block text-3xl">Porcentage</span>
+                        <span class="block text-3xl">Porcentaje</span>
                         <span class="block text-3xl">%{{ $porcentage_descuento }}</span>
                     </div>
 
